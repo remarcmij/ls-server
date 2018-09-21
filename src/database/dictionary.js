@@ -5,7 +5,7 @@ function searchWord(word, lang, attr, chunk, chunkSize) {
   log.debug(`Searching word: ${word}`);
 
   const values = [word];
-  let sql = 'SELECT * FROM DictView WHERE word=?';
+  let sql = 'SELECT * FROM dictview WHERE word=?';
 
   if (lang) {
     sql += ' AND lang=?';
@@ -29,7 +29,7 @@ function makeStopTerm(term) {
 
 function searchCompletions(term, lang) {
   const values = [term, makeStopTerm(term)];
-  let sql = 'SELECT word, lang FROM AutoComplete WHERE word >= ? AND word < ?';
+  let sql = 'SELECT word, lang FROM autocomplete WHERE word >= ? AND word < ?';
 
   if (lang) {
     sql += ' AND lang=?';
